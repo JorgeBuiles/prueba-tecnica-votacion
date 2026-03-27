@@ -74,7 +74,7 @@ app.post('/candidates', async (req, res) => {
             return res.status(400).json({ message: 'El candidato ya está registrado' });
         }
 
-        // 🔥 Validar que no sea votante
+        // Validar que no sea votante
         const voterExists = await Voter.findOne({ email });
         if (voterExists) {
             return res.status(400).json({ message: 'No puede registrarse como candidato porque ya es votante' });

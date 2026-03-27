@@ -1,12 +1,12 @@
 # 🗳️ Sistema de Votación - API REST
 
-## 📌 Descripción
+## Descripción
 
 API REST desarrollada con Node.js, Express y MongoDB que permite gestionar votantes, candidatos y votos, incluyendo estadísticas de la votación.
 
 
 
-## 🚀 Instalación y ejecución
+## Instalación y ejecución
 
 1. Clonar repositorio:
 
@@ -34,7 +34,7 @@ http://localhost:3000
 ```
 
 
-## 🔌 Ejemplos de uso (Postman)
+## Ejemplos de uso (Postman)
 
 
 ### Crear votante
@@ -123,7 +123,7 @@ Response:
 }
 
 
-## 📸 Capturas
+## Capturas
 
 ### Registro de voto
 ![Registro de voto](screenshots/Registro_voto.png)
@@ -136,7 +136,7 @@ Response:
 
 
 
-## ✅ Validaciones implementadas
+## Validaciones implementadas
 
 * Un votante solo puede votar una vez
 * Validación de IDs
@@ -145,7 +145,7 @@ Response:
 * Un votante no puede ser candidato y viceversa
 
 
-## 🧪 Pruebas
+## Pruebas
 
 Probado con Postman.
 
