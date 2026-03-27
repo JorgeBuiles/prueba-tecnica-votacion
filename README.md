@@ -83,33 +83,103 @@ GET /votes/statistics
 
 Ejemplo de respuesta:
 
-```json
+### Crear votante
+
+POST /voters
+
+Request:
 {
-  "total_votes": 3,
-  "total_voters_voted": 3,
-  "results": [
-    {
-      "candidate": "Carlos Lopez",
-      "votes": 2,
-      "percentage": "66.67%"
-    },
-    {
-      "candidate": "Jorge Builes",
-      "votes": 1,
-      "percentage": "33.33%"
-    }
-  ]
+  "name": "Jorge Elias Builes",
+  "email": "jorgeeliasb@mail.com"
 }
-```
+
+Response:
+{
+    "name": "Jorge Elias Builes",
+    "email": "jorgeeliasb@mail.com",
+    "has_voted": false,
+    "_id": "69c6456ca6f5c1377d51c57b",
+    "createdAt": "2026-03-27T08:53:00.973Z",
+    "updatedAt": "2026-03-27T08:53:00.973Z",
+    "__v": 0
+}
+
+### Crear candidato
+
+POST /candidates
+
+Request:
+{
+  "name": "Juan Arango",
+  "email": "arangoj@mail.com",
+  "party": "Partido Verde"
+}
+
+Response:
+{
+    "name": "Juan Arango",
+    "email": "arangoj@mail.com",
+    "party": "Partido Verde",
+    "votes": 0,
+    "_id": "69c6473fa6f5c1377d51c581",
+    "createdAt": "2026-03-27T09:00:47.905Z",
+    "updatedAt": "2026-03-27T09:00:47.905Z",
+    "__v": 0
+}
+
+
+### Registrar voto
+
+Request:
+{
+  "voter_id": "69c6456ca6f5c1377d51c57b",
+  "candidate_id": "69c6473fa6f5c1377d51c581"
+}
+
+
+Response:
+{
+  "message": "Voto registrado correctamente"
+}
+
+### Ver estadisticas
+
+Response:
+{
+    "total_votes": 10,
+    "total_voters_voted": 7,
+    "results": [
+        {
+            "candidate": "Jorge Builes",
+            "votes": 2,
+            "percentage": "20.00%"
+        },
+        {
+            "candidate": "Carlos Lopez",
+            "votes": 2,
+            "percentage": "20.00%"
+        },
+        {
+            "candidate": "Juan Arango",
+            "votes": 1,
+            "percentage": "10.00%"
+        }
+    ]
+}
 
 ---
 
 ## 📸 Capturas
 
-👉 Agregar capturas de Postman mostrando:
+### Registro de voto
+![Registro de voto](screenshots/Registro_voto.png)
 
-* Creación de votos
-* Endpoint /votes/statistics
+### Lista de votos
+![Lista de votos](screenshots/Lista_votos.png)
+
+### Estadísticas
+![Estadísticas](screenshots/statistics.png)
+
 
 ---
 
