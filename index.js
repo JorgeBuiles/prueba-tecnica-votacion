@@ -11,17 +11,17 @@ const app = express();
 
 app.use(express.json());
 
-// 🔌 Conexión a MongoDB
+// Conexión a MongoDB
 mongoose.connect('mongodb://admin:Admin123@ac-a3tms5h-shard-00-00.uo7n8xl.mongodb.net:27017,ac-a3tms5h-shard-00-01.uo7n8xl.mongodb.net:27017,ac-a3tms5h-shard-00-02.uo7n8xl.mongodb.net:27017/?ssl=true&replicaSet=atlas-7u5n0t-shard-0&authSource=admin&appName=Cluster0')
 .then(() => console.log('Conectado a MongoDB'))
 .catch(err => console.log(err));
 
-// 🔹 Ruta base
+// Ruta base
 app.get('/', (req, res) => {
     res.send('API funcionando');
 });
 
-// 🔹 Crear votante
+// Crear votante
 app.post('/voters', async (req, res) => {
     try {
         const { name, email } = req.body;
@@ -37,7 +37,7 @@ app.post('/voters', async (req, res) => {
             return res.status(400).json({ message: 'El email ya está registrado' });
         }
 
-        // 🔥 Validar que no sea candidato
+        // Validar que no sea candidato
         const candidateExists = await Candidate.findOne({ email });
         if (candidateExists) {
             return res.status(400).json({ message: 'No puede registrarse como votante porque ya es candidato' });
@@ -58,7 +58,7 @@ app.post('/voters', async (req, res) => {
     }
 });
 
-// 🔹 Crear candidato
+// Crear candidato
 app.post('/candidates', async (req, res) => {
     try {
         const { name, email, party } = req.body;
@@ -95,7 +95,7 @@ app.post('/candidates', async (req, res) => {
     }
 });
 
-// 🔹 Registrar voto
+// Registrar voto
 app.post('/votes', async (req, res) => {
     try {
         const { voter_id, candidate_id } = req.body;
@@ -127,7 +127,7 @@ app.post('/votes', async (req, res) => {
             return res.status(400).json({ message: 'voter_id y candidate_id son obligatorios' });
         }
         
-        // 🔥 VALIDAR FORMATO DEL ID
+        // VALIDAR FORMATO DEL ID
         if (!mongoose.Types.ObjectId.isValid(candidate_id)) {
             return res.status(400).json({ message: 'candidate_id no es válido' });
         }
@@ -157,7 +157,7 @@ app.post('/votes', async (req, res) => {
     }
 });
 
-// 🔹 Ver candidatos
+// Ver candidatos
 app.get('/candidates', async (req, res) => {
     try {
         const candidates = await Candidate.find();
@@ -200,7 +200,7 @@ app.delete('/candidates/:id', async (req, res) => {
 });
 
 
-// 🔹 Ver votos
+// Ver votos
 app.get('/votes', async (req, res) => {
     try {
         const votes = await Vote.find()
@@ -214,7 +214,7 @@ app.get('/votes', async (req, res) => {
 });
 
 //Estadisticas de votacion
-// 🔹 Ver votos
+// Ver votos
 app.get('/votes', async (req, res) => {
     try {
         const votes = await Vote.find()
@@ -228,7 +228,6 @@ app.get('/votes', async (req, res) => {
 });
 
 
-// 🔥 ESTO VA AQUÍ 👇 (DEBAJO DE /votes)
 
 app.get('/votes/statistics', async (req, res) => {
     try {
@@ -308,7 +307,7 @@ app.delete('/voters/:id', async (req, res) => {
 });
 
 
-// 🚀 Servidor
+// Servidor
 app.listen(3000, () => {
     console.log('Servidor corriendo en puerto 3000');
 });
