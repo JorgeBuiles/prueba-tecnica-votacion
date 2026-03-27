@@ -49,10 +49,6 @@ app.post('/voters', async (req, res) => {
         });
 
         
-
-
-
-
         await newVoter.save();
 
         res.status(201).json(newVoter);

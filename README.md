@@ -4,7 +4,7 @@
 
 API REST desarrollada con Node.js, Express y MongoDB que permite gestionar votantes, candidatos y votos, incluyendo estadísticas de la votación.
 
----
+
 
 ## 🚀 Instalación y ejecución
 
@@ -33,55 +33,9 @@ Servidor en:
 http://localhost:3000
 ```
 
----
 
 ## 🔌 Ejemplos de uso (Postman)
 
-### Crear votante
-
-POST /voters
-
-```json
-{
-  "name": "Ana Torres",
-  "email": "ana@mail.com"
-}
-```
-
----
-
-### Crear candidato
-
-POST /candidates
-
-```json
-{
-  "name": "Carlos Lopez",
-  "email": "carlos@mail.com",
-  "party": "Partido Azul"
-}
-```
-
----
-
-### Emitir voto
-
-POST /votes
-
-```json
-{
-  "voter_id": "ID_VOTANTE",
-  "candidate_id": "ID_CANDIDATO"
-}
-```
-
----
-
-### Ver estadísticas
-
-GET /votes/statistics
-
-Ejemplo de respuesta:
 
 ### Crear votante
 
@@ -142,6 +96,7 @@ Response:
   "message": "Voto registrado correctamente"
 }
 
+
 ### Ver estadisticas
 
 Response:
@@ -167,7 +122,6 @@ Response:
     ]
 }
 
----
 
 ## 📸 Capturas
 
@@ -181,7 +135,6 @@ Response:
 ![Estadísticas](screenshots/statistics.png)
 
 
----
 
 ## ✅ Validaciones implementadas
 
@@ -191,13 +144,11 @@ Response:
 * Email único en votantes
 * Un votante no puede ser candidato y viceversa
 
----
 
 ## 🧪 Pruebas
 
 Probado con Postman.
 
----
 
 ## 👨‍💻 Autor
 
