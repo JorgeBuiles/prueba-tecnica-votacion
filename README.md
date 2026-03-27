@@ -2,26 +2,32 @@
 
 ## 📌 Descripción
 
-API desarrollada en Node.js con Express y MongoDB para gestionar un sistema de votación. Permite registrar votantes, candidatos, emitir votos y obtener estadísticas.
+API REST desarrollada con Node.js, Express y MongoDB que permite gestionar votantes, candidatos y votos, incluyendo estadísticas de la votación.
 
 ---
 
-## 🚀 Tecnologías
+## 🚀 Instalación y ejecución
 
-* Node.js
-* Express
-* MongoDB (Mongoose)
+1. Clonar repositorio:
 
----
+```bash
+git clone https://github.com/JorgeBuiles/prueba-tecnica-votacion.git
+cd prueba-tecnica-votacion
+```
 
-## 📦 Instalación
+2. Instalar dependencias:
 
 ```bash
 npm install
+```
+
+3. Ejecutar servidor:
+
+```bash
 npm run dev
 ```
 
-Servidor corriendo en:
+Servidor en:
 
 ```
 http://localhost:3000
@@ -29,49 +35,87 @@ http://localhost:3000
 
 ---
 
-## 📌 Endpoints
+## 🔌 Ejemplos de uso (Postman)
 
-### 👤 Votantes
+### Crear votante
 
-* **POST /voters** → Crear votante
-* **GET /voters** → Listar votantes
-* **GET /voters/:id** → Obtener votante
-* **DELETE /voters/:id** → Eliminar votante
+POST /voters
 
----
-
-### 🧑‍⚖️ Candidatos
-
-* **POST /candidates** → Crear candidato
-* **GET /candidates** → Listar candidatos
-* **GET /candidates/:id** → Obtener candidato
-* **DELETE /candidates/:id** → Eliminar candidato
+```json
+{
+  "name": "Ana Torres",
+  "email": "ana@mail.com"
+}
+```
 
 ---
 
-### 🗳️ Votos
+### Crear candidato
 
-* **POST /votes** → Emitir voto
-* **GET /votes** → Ver todos los votos
+POST /candidates
+
+```json
+{
+  "name": "Carlos Lopez",
+  "email": "carlos@mail.com",
+  "party": "Partido Azul"
+}
+```
 
 ---
 
-### 📊 Estadísticas
+### Emitir voto
 
-* **GET /votes/statistics**
+POST /votes
 
-Retorna:
+```json
+{
+  "voter_id": "ID_VOTANTE",
+  "candidate_id": "ID_CANDIDATO"
+}
+```
 
-* Total de votos
-* Total de votantes que votaron
-* Votos por candidato
-* Porcentaje por candidato
+---
+
+### Ver estadísticas
+
+GET /votes/statistics
+
+Ejemplo de respuesta:
+
+```json
+{
+  "total_votes": 3,
+  "total_voters_voted": 3,
+  "results": [
+    {
+      "candidate": "Carlos Lopez",
+      "votes": 2,
+      "percentage": "66.67%"
+    },
+    {
+      "candidate": "Jorge Builes",
+      "votes": 1,
+      "percentage": "33.33%"
+    }
+  ]
+}
+```
+
+---
+
+## 📸 Capturas
+
+👉 Agregar capturas de Postman mostrando:
+
+* Creación de votos
+* Endpoint /votes/statistics
 
 ---
 
 ## ✅ Validaciones implementadas
 
-* Un votante no puede votar más de una vez
+* Un votante solo puede votar una vez
 * Validación de IDs
 * Validación de campos obligatorios
 * Email único en votantes
@@ -81,10 +125,10 @@ Retorna:
 
 ## 🧪 Pruebas
 
-Se utilizó Postman para probar todos los endpoints.
+Probado con Postman.
 
 ---
 
 ## 👨‍💻 Autor
 
-Desarrollado por Jorge Elias Builes Chavarria
+Jorge Builes
